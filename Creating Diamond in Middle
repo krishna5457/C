@@ -1,0 +1,58 @@
+Write a C program to print the following pattern.
+
+Input : 5
+
+output :
+
+1 2 3 4 5 5 4 3 2 1
+1 2 3 4     4 3 2 1
+1 2 3         3 2 1
+1 2             2 1
+1                 1
+1 2             2 1
+1 2 3         3 2 1
+1 2 3 4     4 3 2 1
+1 2 3 4 5 5 4 3 2 1
+
+Online GDB Link : https://onlinegdb.com/q3YChYPhu
+
+Coding
+
+#include <stdio.h>
+int main()
+{
+    int a;                              //Input Variable
+    scanf("%d",&a);
+    for(int i=0;i<a;i++){               //Outer for loop1 for printing upper half of pattern
+        for(int j=0;j<a;j++){           //Inner for loop1 for printing left half of upper pattern
+            int c=a-i;
+            if(j<c)
+            printf("%d ",j+1);
+            else
+            printf("  ");
+        }
+        for(int k=a;k>0;k--){           //Inner for loop2 for printing right half of upper pattern
+            if(k+i>a)
+            printf("  ");
+            else
+            printf("%d ",k);
+        }
+        printf("\n");
+    }
+    for(int i=0;i<a;i++){               //Outer for loop2 for printing lower half of pattern
+        for(int j=0;j<a;j++){           //Inner for loop3 for printing left half of lower pattern
+            if(j<=i)
+            printf("%d ",j+1);
+            else
+            printf("  ");
+        }
+        for(int k=0;k<a;k++){           //Inner for loop4 for printing right half of lower pattern
+            if(i+k+1>=a)
+            printf("%d ",a-k);
+            else
+            printf("  ");
+        }
+        printf("\n");
+    }
+    return 0;
+}
